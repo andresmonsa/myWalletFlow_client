@@ -23,9 +23,17 @@ const AddMovement = ({ categories, addModalShow, handleClose, setList, setBalanc
   const submit = async () => {
     await addNewMovement(form, token)
     setTimeout(async () => {
+      setForm({
+        concept: '',
+        date: moment(new Date()).format('YYYY-MM-DD HH:mm'),
+        category: '',
+        amount: 0,
+        type: '',
+        userID
+      })
       setList(await getAllMovements(userID, token))
       setBalance(await getBalance(userID, token))
-    }, 2000)
+    }, 1000)
     handleClose()
     toastCustom('Movement added', 'success', 4000, 'bottom-right')
   }

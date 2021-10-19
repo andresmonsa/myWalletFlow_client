@@ -1,4 +1,4 @@
-function validate (value, target, setErrors) {
+export function validate (value, target, setErrors) {
   if (target === 'name' || target === 'lastName') {
     setErrors((prev) => ({ ...prev, [target]: null }))
     const nameformat = /^[a-zA-Z 1-9 áéíóú ü]{3,15}$/
@@ -20,6 +20,14 @@ function validate (value, target, setErrors) {
       setErrors((prev) => ({ ...prev, email: 'email is invalid' }))
     }
   }
-}
 
-module.exports = { validate }
+  if (target === 'password') {
+    setErrors((prev) => ({ ...prev, password: null }))
+    if (value === '') {
+      setErrors((prev) => ({ ...prev, password: 'password is required' }))
+    }
+    if (value.length < 6) {
+      setErrors((prev) => ({ ...prev, password: 'password is too short' }))
+    }
+  }
+}

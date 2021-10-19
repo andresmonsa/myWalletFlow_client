@@ -1,10 +1,12 @@
 import { Form, Button, Container } from 'react-bootstrap'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { createSelectorHook, useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setLogged } from '../../redux/actions/userActions'
 import { login } from '../functions/Index'
 import SignUp from '../SignUp/SignUp'
+import { toastCustom } from '../common/toastify'
+import { validate } from '../functions/formValidate'
+
 const Login = () => {
   const dispatch = useDispatch()
   const [form, setForm] = useState({
@@ -12,21 +14,20 @@ const Login = () => {
     password: ''
   })
   const [modalShow, setModalShow] = useState(false)
+  const [error, setError] = useState({})
 
   const onChange = (e) => {
+    validate(e.target.value, e.target.name, setError)
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-    // console.log(form)
   }
 
   const onSubmit = async (e) => {
-    // console.log(form)
     e.preventDefault()
     login(form)
       .then(res => {
-        // console.log(res)
         dispatch(setLogged(res))
       })
-      .catch(e => console.log('Algo salió mal'))
+      .catch(e => toastCustom('ups! something went wrong! ', 'error', 4000, 'bottom-right'))
   }
   const handleClose = () => setModalShow(false)
 
@@ -43,7 +44,7 @@ const Login = () => {
           <Form.Group className='mb-3' controlId='formBasicPassword'>
             <Form.Control type='password' placeholder='Password' name='password' />
           </Form.Group>
-          {form.email === '' || form.password === ''
+          {form.email === '' || form.password === '' || error.email || error.password
             ? (
               <Button variant='primary' type='submit' disabled onClick={(e) => onSubmit(e)}>
                 Login

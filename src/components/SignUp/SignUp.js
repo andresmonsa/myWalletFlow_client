@@ -20,8 +20,8 @@ const SignUp = ({ modalShow, handleClose }) => {
     if (form.name === '' || form.lastName === '' || form.email === '' || form.password === '' || form.password === '') {
       setError((prev) => ({ ...prev, complete: true }))
     } else setError((prev) => ({ ...prev, complete: null }))
-    console.log(error.matchPassword)
-  }, [form.password, form.confirmPassword])
+  }, [form.password, form.confirmPassword, form])
+
   const [error, setError] = useState({})
 
   const paswordValidate = (form) => {
@@ -36,13 +36,11 @@ const SignUp = ({ modalShow, handleClose }) => {
 
   const onSubmit = async (e) => {
     paswordValidate(form)
-    console.log(form)
-    console.log(error)
     try {
       const userData = await signUp(form)
       dispatch(setLogged(userData))
     } catch (e) {
-      console.log(e.message)
+      console.log(e.message, '<error>')
     }
   }
 

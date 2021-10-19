@@ -34,7 +34,7 @@ const Home = () => {
       setCategories(await getCategories())
     }
     getData()
-  }, [])
+  }, [userID, token])
 
   useEffect(() => {
     let filtredByType = []
