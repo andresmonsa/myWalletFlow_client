@@ -6,6 +6,8 @@ import { login } from '../functions/Index'
 import SignUp from '../SignUp/SignUp'
 import { toastCustom } from '../common/toastify'
 import { validate } from '../functions/formValidate'
+import Wallet from './Wallet.png'
+import style from './Login.module.css'
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -35,8 +37,12 @@ const Login = () => {
 
   return (
     <>
-      <Container className='mt-5'>
-        <Form onChange={(e) => { onChange(e) }}>
+
+      <Container className='mt-5 d-flex'>
+        <div>
+          <img src={Wallet} />
+        </div>
+        <Form onChange={(e) => { onChange(e) }} className={style.form}>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Control type='email' placeholder='Email...' name='email' />
           </Form.Group>
@@ -60,7 +66,7 @@ const Login = () => {
           <Form.Label>For got your password?</Form.Label>
         </Form>
       </Container>
-      <Container className='text-center'>
+      <Container className={style.signUp}>
         <Button variant='success' onClick={() => { addModalShow() }}>
           Sign Up
         </Button>

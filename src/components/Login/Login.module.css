@@ -1,0 +1,14 @@
+.form {
+  width: 60%;
+  margin: 100px;
+  border: 1px solid rgba(136, 134, 134, 0.26);
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.signUp {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15%;
+  margin-top: -5%;
+}
