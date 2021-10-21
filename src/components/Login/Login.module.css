@@ -7,8 +7,5 @@
 }
 
 .signUp {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 15%;
-  margin-top: -5%;
+  margin-left: 80%;
 }

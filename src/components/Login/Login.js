@@ -27,6 +27,8 @@ const Login = () => {
     e.preventDefault()
     login(form)
       .then(res => {
+        // console.log(res)
+        toastCustom(`Wellcome back ${res.name} `, 'success', 4000, 'bottom-right')
         dispatch(setLogged(res))
       })
       .catch(e => toastCustom('ups! something went wrong! ', 'error', 4000, 'bottom-right'))
@@ -64,14 +66,15 @@ const Login = () => {
 
           <hr />
           <Form.Label>For got your password?</Form.Label>
+          <br />
+          <Button variant='success' onClick={() => { addModalShow() }} className={style.signUp}>
+            Sign Up
+          </Button>
+          <SignUp handleClose={handleClose} modalShow={modalShow} />
         </Form>
+
       </Container>
-      <Container className={style.signUp}>
-        <Button variant='success' onClick={() => { addModalShow() }}>
-          Sign Up
-        </Button>
-        <SignUp handleClose={handleClose} modalShow={modalShow} />
-      </Container>
+
     </>
   )
 }

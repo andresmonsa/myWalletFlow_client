@@ -1,0 +1,13 @@
+.modal {
+  margin-left: 70%;
+  width: 18%;
+}
+
+.li { 
+  border: 1px;
+  background-color: rgba(156, 147, 147, 0.267);
+}
+.li:hover {
+  background-color: rgb(163, 162, 162);
+  color: white;
+}
