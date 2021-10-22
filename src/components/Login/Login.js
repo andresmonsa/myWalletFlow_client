@@ -27,7 +27,7 @@ const Login = () => {
     e.preventDefault()
     login(form)
       .then(res => {
-        // console.log(res)
+        console.log(res, 'RES')
         toastCustom(`Wellcome back ${res.name} `, 'success', 4000, 'bottom-right')
         dispatch(setLogged(res))
       })
@@ -42,7 +42,7 @@ const Login = () => {
 
       <Container className='mt-5 d-flex'>
         <div>
-          <img src={Wallet} />
+          <img src={Wallet} alt='logo' />
         </div>
         <Form onChange={(e) => { onChange(e) }} className={style.form}>
           <Form.Group className='mb-3' controlId='formBasicEmail'>

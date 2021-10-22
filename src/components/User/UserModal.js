@@ -1,11 +1,17 @@
 import { Modal, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { MdAccountCircle } from 'react-icons/md'
 import modalStyle from './UserModal.module.css'
+
 const UserModal = ({ handleClose, show, closeSesion }) => {
+  const userName = useSelector(state => state.logged.name)
+
   return (
     <Modal show={show} onHide={handleClose} className={modalStyle.modal}>
       <Modal.Header>
-        <Modal.Title>Account</Modal.Title>
+        <MdAccountCircle className={modalStyle.logo} />
+        <Modal.Title>{userName}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>

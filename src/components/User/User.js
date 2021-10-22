@@ -1,4 +1,4 @@
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { useState } from 'react'
 import { MdAccountCircle } from 'react-icons/md'
 import UserModal from './UserModal'
