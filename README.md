@@ -38,6 +38,12 @@
 </p>
 
 
+- You can close sesion and  You will able to edit profile .
+<p align="center">
+  <img width="900" src="./Assets/User.png" />
+</p>
+
+
 
 > Made using the HTML, CSS, Javascript, React, Redux, Node.JS, Express, Bootstrap Sequelize, PostgreSQL technology stack.
 <br>
